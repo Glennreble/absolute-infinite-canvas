@@ -41,11 +41,11 @@ function formatDistance(d)
     }
     else if(d.gte(maxSI))
     {
-        return formatNumber(d.div(maxSI)) + " " + pBig[pBig.length - 1] + "meters";
+        return formatNumber(d.div(maxSI)) + " " + pBig[pBig.length - 1] + "m";
     }
     else if(d.lte(minSI))
     {
-        return formatNumber(d.div(minSI)) + " " + pSmall[pSmall.length - 1] + "meters";
+        return formatNumber(d.div(minSI)) + " " + pSmall[pSmall.length - 1] + "m";
     }
     return d.toFixed(2) + " Meters";
 }
