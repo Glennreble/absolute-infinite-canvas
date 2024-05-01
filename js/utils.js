@@ -26,18 +26,18 @@ function formatDistance(d)
 {
     d = new Decimal(d);
 
-    let pBig = ["", "Kilo", "Mega", "Giga", "Tera", "Peta", "Exa", "Zetta", "Yotta", "Ronna", "Quekka"];
-    let pSmall = ["", "milli", "micro", "nano", "pico", "femto", "atto", "zepto", "yocto", "ronto", "quecto"];
+    let pBig = ["", "k", "M", "G", "T", "P", "E", "Z", "Y", "R", "Q", "Qk", "Qm", "Qg", "Qt", "Qp", "Qe", "Qz", "Qy", "Qr", "A"];
+    let pSmall = ["", "m", "μ", "n", "p", "f", "a", "z", "y", "r", "q", "mq", "μq", "nq", "pq", "fq", "aq", "zq", "yq", "rq", "am"];
 
     let maxSI = Decimal.pow(10, 3 * pBig.length - 3), minSI = Decimal.pow(10, -3 * pSmall.length + 3);
 
     if (d.gt(1000) && d.lt(maxSI))
     {
-        return Decimal.pow(10, Decimal.log10(d) % 3).toFixed(2) + " " + pBig[Math.floor(d.e / 3)] + "meters";
+        return Decimal.pow(10, Decimal.log10(d) % 3).toFixed(2) + " " + pBig[Math.floor(d.e / 3)] + "m";
     }
     else if (d.lt(1) && d.gt(minSI))
     {
-        return Decimal.pow(10, 3 + (Decimal.log10(d) % 3)).toFixed(2) + " " + pSmall[Math.floor(-Decimal.log(d, 1000)) + 1] + "meters";
+        return Decimal.pow(10, 3 + (Decimal.log10(d) % 3)).toFixed(2) + " " + pSmall[Math.floor(-Decimal.log(d, 1000)) + 1] + "m";
     }
     else if(d.gte(maxSI))
     {
